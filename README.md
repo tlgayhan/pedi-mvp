@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Deployment notes
+
+- Set environment variables in your Vercel project:
+  - `NEXT_PUBLIC_VERSION`
+  - `NEXT_PUBLIC_GIT_SHA`
+  - `NEXT_PUBLIC_BUILT_AT`
+- Use default Next.js build and output settings — no special configuration required.
+
+## Tez Sunumu
+
+- Demo sayfası: `/demo`
+- Self-test: `/self-test`
+- Durum: `/status`
+- Hakkında: `/about`
+
+Doğrulama adımları:
+- `npm test` çalıştırarak birim testlerini doğrulayın.
+- Tarayıcıda `/self-test` açın; tüm kontroller PASS olmalı.
+- `/demo` sayfasındaki hazır senaryo butonlarını deneyin (bakım sıvısı, dehidratasyon, PEWS orta risk).
