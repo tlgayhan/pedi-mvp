@@ -57,43 +57,37 @@ export default function Page() {
   }, [parsed]);
 
   return (
-    <div className="min-h-screen grid place-items-center p-6 sm:p-10">
-      <main className="w-full max-w-md space-y-6">
-        <header className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">PEWS Skoru</h1>
-          <p className="text-sm text-foreground/70">Basitleştirilmiş skor — canlı sonuç</p>
+    <div className="min-h-screen grid place-items-center p-6">
+      <main className="w-full max-w-md space-y-4">
+        <header className="text-center space-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight">PEWS</h1>
+          <p className="text-xs text-foreground/70">Basitleştirilmiş skor (AVPU, O2, RR, HR, CR)</p>
         </header>
 
-        <section className="rounded-lg border border-black/10 dark:border-white/10 p-4 sm:p-5 space-y-4" aria-labelledby="pews-form">
-          <h2 id="pews-form" className="sr-only">
-            PEWS formu
-          </h2>
+        <section className="space-y-4" aria-labelledby="pews-form">
+          <h2 id="pews-form" className="sr-only">PEWS formu</h2>
 
           <div className="grid gap-2">
-            <label htmlFor="rr" className="text-sm font-medium">
-              Solunum sayısı (dk)
-            </label>
+            <label htmlFor="rr" className="text-sm font-medium">Solunum sayısı (dk)</label>
             <input
               id="rr"
               type="number"
               inputMode="numeric"
               step={1}
-              min={0}
-              max={300}
+              min={10}
+              max={120}
+              placeholder="10–120"
               value={respRate}
               onChange={(e) => setRespRate(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p className="text-xs text-foreground/60">0–300</p>
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="ox" className="text-sm font-medium">
-              Oksijen desteği
-            </label>
+            <label htmlFor="ox" className="text-sm font-medium">Oksijen desteği</label>
             <select
               id="ox"
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
               value={oxygen}
               onChange={(e) => setOxygen(e.target.value)}
             >
@@ -104,30 +98,26 @@ export default function Page() {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="hr" className="text-sm font-medium">
-              Nabız (dk)
-            </label>
+            <label htmlFor="hr" className="text-sm font-medium">Nabız (dk)</label>
             <input
               id="hr"
               type="number"
               inputMode="numeric"
               step={1}
-              min={0}
-              max={300}
+              min={40}
+              max={220}
+              placeholder="40–220"
               value={heartRate}
               onChange={(e) => setHeartRate(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p className="text-xs text-foreground/60">0–300</p>
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="cr" className="text-sm font-medium">
-              Kapiller dolum
-            </label>
+            <label htmlFor="cr" className="text-sm font-medium">Kapiller dolum</label>
             <select
               id="cr"
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
               value={capRefill}
               onChange={(e) => setCapRefill(e.target.value)}
             >
@@ -138,12 +128,10 @@ export default function Page() {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="beh" className="text-sm font-medium">
-              Davranış (AVPU)
-            </label>
+            <label htmlFor="beh" className="text-sm font-medium">Davranış (AVPU)</label>
             <select
               id="beh"
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
               value={behavior}
               onChange={(e) => setBehavior(e.target.value)}
             >
@@ -154,29 +142,19 @@ export default function Page() {
             </select>
           </div>
 
-          {error && (
-            <p role="alert" className="text-sm text-red-600">
-              {error}
-            </p>
-          )}
+          {error && <p role="alert" className="text-xs text-red-600">{error}</p>}
         </section>
 
-        <section className="rounded-lg border border-black/10 dark:border-white/10 p-4 sm:p-5 space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Toplam</span>
-            <span aria-live="polite" className="text-base font-semibold tabular-nums">
-              {result ? result.total : "—"}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Seviye</span>
-            <span aria-live="polite" className="text-base font-semibold">
-              {result ? (result.tier === "low" ? "düşük" : result.tier === "med" ? "orta" : "yüksek") : "—"}
-            </span>
-          </div>
+        <section aria-live="polite" className="rounded-lg border border-black/10 dark:border-white/10 px-5 py-5 text-center space-y-1">
+          <p className="text-2xl font-semibold">{result ? result.total : "—"}</p>
+          <p className="text-sm text-foreground/70">
+            {result ? (result.tier === "low" ? "düşük" : result.tier === "med" ? "orta" : "yüksek") : "Seviye"}
+          </p>
         </section>
 
-        <p className="text-xs text-foreground/60 text-center">Bu araç klinik karar desteği değildir.</p>
+        <footer className="text-center">
+          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+        </footer>
       </main>
     </div>
   );

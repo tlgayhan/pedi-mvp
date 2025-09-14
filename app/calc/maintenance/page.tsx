@@ -58,18 +58,16 @@ function MaintenanceInner() {
   };
 
   return (
-    <div className="min-h-screen grid place-items-center p-6 sm:p-10">
-      <main className="w-full max-w-xl space-y-6">
-        <header className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">Bakım Sıvısı Hesaplayıcı</h1>
-          <p className="text-sm text-foreground/70">4-2-1 kuralına göre mL/saat</p>
+    <div className="min-h-screen grid place-items-center p-6">
+      <main className="w-full max-w-md space-y-4">
+        <header className="text-center space-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight">Bakım Sıvısı</h1>
+          <p className="text-xs text-foreground/70">4-2-1 kuralına göre mL/saat</p>
         </header>
 
-        <section className="rounded-lg border border-black/10 dark:border-white/10 p-4 sm:p-5 space-y-4">
+        <section className="space-y-4">
           <div className="grid gap-2">
-            <label htmlFor="kg" className="text-sm font-medium">
-              Ağırlık (kg)
-            </label>
+            <label htmlFor="kg" className="text-sm font-medium">Ağırlık (kg)</label>
             <input
               id="kg"
               type="number"
@@ -77,36 +75,29 @@ function MaintenanceInner() {
               step={0.5}
               min={MIN_KG}
               max={MAX_KG}
+              placeholder={`${MIN_KG}–${MAX_KG}`}
               value={kgInput}
               onChange={(e) => setKgInput(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
-              aria-describedby="kg-help"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p id="kg-help" className="text-xs text-foreground/60">
-              {MIN_KG}–{MAX_KG} kg, adım 0.5
-            </p>
             {error && (
-              <p role="alert" className="text-sm text-red-600">
-                {error}
-              </p>
+              <p role="alert" className="text-xs text-red-600">{error}</p>
             )}
           </div>
 
           <div
             aria-live="polite"
-            className={`rounded-md border px-4 py-3 text-center text-lg font-medium ${
-              result != null && !error
-                ? "border-green-500 text-green-700"
-                : "border-black/10 dark:border-white/15 text-foreground/80"
-            }`}
+            className="rounded-lg border border-black/10 dark:border-white/10 px-5 py-5 text-center"
           >
-            {result != null && !error ? `${pretty(result)} ml/saat` : "Sonuç burada görünecek"}
+            <p className="text-2xl font-semibold">
+              {result != null && !error ? `${pretty(result)} ml/saat` : "—"}
+            </p>
           </div>
         </section>
 
-        <p className="text-xs text-foreground/60 text-center">
-          Bu araç klinik karar desteği değildir.
-        </p>
+        <footer className="text-center">
+          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+        </footer>
       </main>
     </div>
   );

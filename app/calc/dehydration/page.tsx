@@ -68,18 +68,16 @@ function DehydrationInner() {
   }, [parsed]);
 
   return (
-    <div className={"min-h-screen grid place-items-center p-6 sm:p-10"}>
-      <main className="w-full max-w-md space-y-6">
-        <header className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">Dehidratasyon Hesaplayıcı</h1>
-          <p className="text-sm text-foreground/70">Defisit + bakım saatlik hesap</p>
+    <div className="min-h-screen grid place-items-center p-6">
+      <main className="w-full max-w-md space-y-4">
+        <header className="text-center space-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight">Dehidratasyon</h1>
+          <p className="text-xs text-foreground/70">Defisit + bakım (mL/saat)</p>
         </header>
 
-        <section className="rounded-lg border border-black/10 dark:border-white/10 p-4 sm:p-5 space-y-4">
+        <section className="space-y-4">
           <div className="grid gap-2">
-            <label htmlFor="weight" className="text-sm font-medium">
-              Ağırlık (kg)
-            </label>
+            <label htmlFor="weight" className="text-sm font-medium">Ağırlık (kg)</label>
             <input
               id="weight"
               type="number"
@@ -87,17 +85,16 @@ function DehydrationInner() {
               step={0.5}
               min={0.5}
               max={100}
+              placeholder="0.5–100"
               value={weightKg}
               onChange={(e) => setWeightKg(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p className="text-xs text-foreground/60">0.5–100 kg, adım 0.5</p>
+            {error && <p role="alert" className="text-xs text-red-600">{error}</p>}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="percent" className="text-sm font-medium">
-              Dehidratasyon (%)
-            </label>
+            <label htmlFor="percent" className="text-sm font-medium">Dehidratasyon (%)</label>
             <input
               id="percent"
               type="number"
@@ -105,17 +102,15 @@ function DehydrationInner() {
               step={0.5}
               min={0}
               max={10}
+              placeholder="0–10"
               value={percent}
               onChange={(e) => setPercent(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p className="text-xs text-foreground/60">0–10%</p>
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="hours" className="text-sm font-medium">
-              Süre (saat)
-            </label>
+            <label htmlFor="hours" className="text-sm font-medium">Süre (saat)</label>
             <input
               id="hours"
               type="number"
@@ -123,38 +118,24 @@ function DehydrationInner() {
               step={1}
               min={1}
               max={48}
+              placeholder="1–48 (varsayılan 24)"
               value={hours}
               onChange={(e) => setHours(e.target.value)}
-              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-3 py-2 text-base outline-none focus:ring-2 focus:ring-foreground"
+              className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent px-4 py-3 text-base outline-none focus:ring-2 focus:ring-foreground"
             />
-            <p className="text-xs text-foreground/60">1–48 saat (varsayılan 24)</p>
-          </div>
-
-          {error && (
-            <p role="alert" className="text-sm text-red-600">
-              {error}
-            </p>
-          )}
-        </section>
-
-        <section className="rounded-lg border border-black/10 dark:border-white/10 p-4 sm:p-5 space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Defisit (mL)</span>
-            <span className="text-base font-semibold tabular-nums">
-              {result ? result.deficitMl : "—"}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Saatlik (mL/saat)</span>
-            <span aria-live="polite" className="text-base font-semibold tabular-nums">
-              {result ? result.hourlyMl : "—"}
-            </span>
           </div>
         </section>
 
-        <p className="text-xs text-foreground/60 text-center">
-          Bu araç klinik karar desteği değildir.
-        </p>
+        <section aria-live="polite" className="rounded-lg border border-black/10 dark:border-white/10 px-5 py-5 text-center space-y-2">
+          <p className="text-2xl font-semibold">
+            {result ? `${result.hourlyMl} mL/saat` : "—"}
+          </p>
+          <p className="text-sm text-foreground/70">Defisit: {result ? `${result.deficitMl} mL` : "—"}</p>
+        </section>
+
+        <footer className="text-center">
+          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+        </footer>
       </main>
     </div>
   );

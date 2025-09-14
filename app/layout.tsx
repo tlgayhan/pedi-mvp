@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pediatri Web MVP",
-  description: "Pediatric calculators, scores and offline support",
+  title: "Pediatri Hesaplayıcı",
+  description: "Hızlı ve sade klinik hesaplayıcılar.",
   manifest: "/manifest.webmanifest",
 };
 
