@@ -1,0 +1,37 @@
+[
+  {
+    "id": "paracetamol",
+    "name": "Parasetamol",
+    "routes": [
+      {
+        "route": "PO",
+        "perKgMg": 10,
+        "maxSingleMg": 500,
+        "maxDailyMgPerKg": 60,
+        "maxDailyMgAbs": 3000,
+        "intervalH": 6,
+        "concentrationsMgPerMl": [24, 40]
+      }
+    ],
+    "guardrails": { "minKg": 0.5, "maxKg": 100 },
+    "notes": "REVIEWED: placeholders; clinical review required"
+  },
+  {
+    "id": "ibuprofen",
+    "name": "İbuprofen",
+    "routes": [
+      {
+        "route": "PO",
+        "perKgMg": 10,
+        "maxSingleMg": 400,
+        "maxDailyMgPerKg": 40,
+        "maxDailyMgAbs": 1600,
+        "intervalH": 6,
+        "concentrationsMgPerMl": [20, 40]
+      }
+    ],
+    "guardrails": { "minKg": 0.5, "maxKg": 100 },
+    "notes": "REVIEWED: placeholders; clinical review required"
+  }
+]
+

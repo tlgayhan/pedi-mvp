@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { calcPEWS, OutOfRangeError } from "@/lib/scores/pews";
 import type { PewsInputs } from "@/lib/scores/pews";
+import Disclaimer from "@/app/_components/Disclaimer";
 
 export default function Page() {
   const [respRate, setRespRate] = useState<string>("");
@@ -153,7 +154,7 @@ export default function Page() {
         </section>
 
         <footer className="text-center">
-          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+          <Disclaimer />
         </footer>
       </main>
     </div>

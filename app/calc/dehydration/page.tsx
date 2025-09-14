@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { calcDehydrationPlan, OutOfRangeError } from "@/lib/calculators/dehydration";
+import Disclaimer from "@/app/_components/Disclaimer";
 
 type Result = { deficitMl: number; hourlyMl: number } | null;
 
@@ -134,7 +135,7 @@ function DehydrationInner() {
         </section>
 
         <footer className="text-center">
-          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+          <Disclaimer />
         </footer>
       </main>
     </div>

@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { calcMaintenance } from "@/lib/calculators/maintenance";
+import Disclaimer from "@/app/_components/Disclaimer";
 
 const MIN_KG = 0.5;
 const MAX_KG = 100;
@@ -96,7 +97,7 @@ function MaintenanceInner() {
         </section>
 
         <footer className="text-center">
-          <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
+          <Disclaimer />
         </footer>
       </main>
     </div>
