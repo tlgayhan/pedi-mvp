@@ -64,7 +64,7 @@ export default function ClientDrugCalc({ db, initial }: { db: DrugsDb; initial: 
       setConc(String(route.concentrationsMgPerMl[0] ?? ""));
     }
     setDoses((prev) => (prev ? prev : String(24 / route.intervalH)));
-  }, [route]);
+  }, [route, conc]);
 
   const parsed = useMemo(() => {
     return {
@@ -237,4 +237,3 @@ export default function ClientDrugCalc({ db, initial }: { db: DrugsDb; initial: 
     </div>
   );
 }
-
