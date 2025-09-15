@@ -1,0 +1,98 @@
+{
+  "toxidromes": [
+    {
+      "id": "anticholinergic",
+      "name": "Antikolinerjik",
+      "keyFindings": [
+        "kuru deri/sıcak",
+        "midriazis",
+        "taşikardi",
+        "ileus/idrar retansiyonu",
+        "deliryum/ajitasyon"
+      ],
+      "negFindings": ["terleme belirgin"],
+      "labsHelpful": ["EKG", "BMP", "CK (gerektiğinde)"],
+      "notes": "Klasik ipuçları: hot as a hare, dry as a bone, mad as a hatter ... (eğitsel not)."
+    },
+    {
+      "id": "cholinergic",
+      "name": "Kolinerjik",
+      "keyFindings": [
+        "salivasyon",
+        "lakrimasyon",
+        "ürinasyon",
+        "defekasyon",
+        "GIS krampları",
+        "miyozis",
+        "bronkorre/spazm"
+      ],
+      "negFindings": [],
+      "labsHelpful": ["SpO2", "Kan gazı"],
+      "notes": "SLUDGE/DUMBELS ipuçları (eğitsel not)."
+    },
+    {
+      "id": "sympathomimetic",
+      "name": "Sempatomimetik",
+      "keyFindings": [
+        "taşikardi",
+        "hipertansiyon",
+        "terleme",
+        "midriazis",
+        "hipertermi",
+        "ajitasyon"
+      ],
+      "negFindings": ["kuru deri"],
+      "labsHelpful": ["EKG", "CK", "BMP"],
+      "notes": ""
+    },
+    {
+      "id": "opioid",
+      "name": "Opioid",
+      "keyFindings": [
+        "depresyon (solunum/SSS)",
+        "miyozis",
+        "bradikardi",
+        "hipotansiyon"
+      ],
+      "negFindings": ["midriazis"],
+      "labsHelpful": ["SpO2", "Kan gazı"],
+      "notes": ""
+    },
+    {
+      "id": "sedative",
+      "name": "Sedatif-hipnotik",
+      "keyFindings": [
+        "SSS depresyonu",
+        "ataksi",
+        "hipotansiyon (ileri olgularda)"
+      ],
+      "negFindings": ["miyozis zorunlu değil"],
+      "labsHelpful": ["Glukoz", "Kan gazı"],
+      "notes": ""
+    },
+    {
+      "id": "serotonin",
+      "name": "Serotonerjik",
+      "keyFindings": ["hiperrefleksi", "klonus", "hipertermi", "terleme", "ajitasyon"],
+      "negFindings": [],
+      "labsHelpful": ["CK", "BMP"],
+      "notes": ""
+    },
+    {
+      "id": "nms_mh_flag",
+      "name": "NMS/Malign Hipertermi (bayrak)",
+      "keyFindings": ["sert rijidite (NMS)", "çok yüksek ateş", "CK artışları"],
+      "negFindings": [],
+      "labsHelpful": ["CK", "BMP"],
+      "notes": "Bu madde sadece 'yüksek risk bayrağı' için."
+    }
+  ],
+  "redFlags": [
+    "Kötü oksijenlenme/apne",
+    "Persistan hipotansiyon",
+    "Hipertermi > 40°C",
+    "Nöbetler",
+    "Şiddetli bilinç değişikliği"
+  ]
+}
+

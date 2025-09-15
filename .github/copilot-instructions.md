@@ -11,6 +11,13 @@ Small, safe PWA for pediatric calculators (4-2-1, dehydration, free-water) + PEW
 - Accessibility & validation at UI and function boundaries
 - No PHI; anonymous metrics only
 
+### Toxicology Safety
+- Never provide diagnosis or treatment orders.
+- Toxidrome module is educational only: suggest patterns; do not prescribe.
+- Always show a red banner: “Acil uyarılar varsa 112’yi arayın / Zehir Danışma Merkezi ile iletişime geçin.”
+- No medication dosing in tox module (antidot doses excluded in MVP).
+- All outputs must include a disclaimer line.
+
 ## Folders
 /app/(public), /app/calc/*, /app/score/pews, /app/status, /app/api/status
 /content/*.json, /lib/calculators/*.ts, /lib/safety.ts, /tests/*.test.ts

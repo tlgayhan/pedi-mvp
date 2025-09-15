@@ -1,4 +1,5 @@
 import HomeButtons from "@/app/_components/HomeButtons";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,6 +11,15 @@ export default function Home() {
         </header>
 
         <HomeButtons />
+
+        <div className="grid grid-cols-1 gap-3">
+          <Link
+            href="/toxicology"
+            className="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-foreground text-background font-medium transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] focus-visible:ring-2 focus-visible:ring-offset-2"
+          >
+            Toksidrom
+          </Link>
+        </div>
 
         <footer className="pt-2">
           <p className="text-xs text-foreground/60">Uyarı: Bu araç klinik karar desteği değildir.</p>
